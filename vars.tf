@@ -1,16 +1,11 @@
+variable "region" {
+    description = "AWS default region"
+    default = "us-east-1"
+}
+
 variable "instance_type" {
     description = "AWS instance type"
     default = "p2.xlarge"
-}
-
-variable "provisioner_key_name" {
-    description = "The key name"
-    default = "datalab-provisioner"
-}
-
-variable "provisioner_key_file" {
-    description = "Private key file path for the provisioner_user"
-    default = "security/datalab-provisioner.pem"
 }
 
 variable "server_port" {
@@ -19,5 +14,15 @@ variable "server_port" {
 }
 
 variable "spot_price" {
-    description = "Max spot-price"
+    description = "Max spot-price (required)"
+}
+
+variable "key_name" {
+    description = "Key name"
+    default = "terraform"
+}
+
+variable "terraform_state_bucket" {
+    description = "S3 bucket to store online the Terraform state"
+    default = "s3-terraform-state.stedel.it"
 }

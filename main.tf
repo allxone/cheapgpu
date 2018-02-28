@@ -8,7 +8,7 @@ terraform {
 }
 
 provider "aws" {
-    region = "us-east-1"
+    region = "${var.region}"
 }
 
 data "aws_availability_zones" "available" {}
@@ -36,7 +36,7 @@ resource "aws_launch_configuration" "cheapgpu_conf" {
 
   spot_price    = "${var.spot_price}"
 
-  key_name = "${var.provisioner_key_name}"
+  key_name = "${var.key_name}"
   security_groups = ["${aws_security_group.cheapgpu.name}"]
 }
 
@@ -86,7 +86,7 @@ resource "aws_autoscaling_group" "cheapgpu" {
   }
 }
 
-resource "aws_spot_datafeed_subscription" "default" {
-  bucket = "s3-terraform-state.stedel.it"
-  prefix = "spot_datafeed"
-}
+# resource "aws_spot_datafeed_subscription" "default" {
+#   bucket = "s3-terraform-state.stedel.it"
+#   prefix = "spot_datafeed"
+# }
