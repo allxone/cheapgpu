@@ -21,8 +21,3 @@ variable "key_name" {
     description = "Key name"
     default = "terraform"
 }
-
-variable "terraform_state_bucket" {
-    description = "S3 bucket to store online the Terraform state"
-    default = "s3-terraform-state.stedel.it"
-}
